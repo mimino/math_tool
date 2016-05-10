@@ -9,13 +9,17 @@ HEADERS         = msas_plugin.h \
     msaspublication.h \
     msaspublicationsrefresher.h \
     msasrefresherbase.h \
-    msasauthorsrefresher.h
+    msasauthorsrefresher.h \
+    msasauthor.h \
+    msaskeywordsrefresher.h
 
 SOURCES         = msas_plugin.cpp \
     msaspublication.cpp \
     msaspublicationsrefresher.cpp \
     msasrefresherbase.cpp \
-    msasauthorsrefresher.cpp
+    msasauthorsrefresher.cpp \
+    msasauthor.cpp \
+    msaskeywordsrefresher.cpp
 
 OTHER_FILES += msas.json
 

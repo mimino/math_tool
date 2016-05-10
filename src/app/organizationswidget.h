@@ -1,5 +1,5 @@
-#ifndef ORGANIZATIONSWIDGET_H
-#define ORGANIZATIONSWIDGET_H
+#ifndef __ORGANIZATIONS_WIDGET__
+#define __ORGANIZATIONS_WIDGET__
 
 #include <QWidget>
 
@@ -9,14 +9,14 @@ QT_END_NAMESPACE
 
 class OrganizationsWidget : public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit OrganizationsWidget(QAbstractItemModel* model, QWidget *parent = 0);
+	explicit OrganizationsWidget(QAbstractItemModel* model, QWidget *parent = 0);
 
 signals:
 
-public slots:
+	public slots:
 
 };
 
-#endif // ORGANIZATIONSWIDGET_H
+#endif // __ORGANIZATIONS_WIDGET__

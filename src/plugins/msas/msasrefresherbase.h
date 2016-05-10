@@ -9,7 +9,7 @@ class MSASRefresherBase : public QObject
 public:
     explicit MSASRefresherBase(QObject *parent = 0);
     virtual ~MSASRefresherBase();
-    virtual void refresh();
+    virtual void refresh(int subDomain = 0);
 
 signals:
     void refreshFinished();

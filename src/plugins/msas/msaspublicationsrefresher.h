@@ -2,10 +2,12 @@
 #define MSASPUBLICATIONSREFRESHER_H
 
 #include <QList>
+#include <QDomElement>
+
 #include "msasrefresherbase.h"
+#include "publication.h"
 
 class DownloadManager;
-class MSASPublication;
 
 class MSASPublicationsRefresher : public MSASRefresherBase
 {
@@ -13,20 +15,37 @@ class MSASPublicationsRefresher : public MSASRefresherBase
 public:
     MSASPublicationsRefresher();
     virtual ~MSASPublicationsRefresher();
-    virtual void refresh();
+    virtual void refresh(int subDomain = 0);
 
 private slots:
     void finished();
 
 private:
-
-    void downloadPage(int pageNum);
+	void downloadPage(int pageNum);
     void parseHtml(QString fileName);
     bool isLastPage(QString fileName);
 
+
+	void switchState();
+	void refreshList();
+	void refreshPublications();
+	void parseDigestList(QString fileName);
+	Publication parsePublicationDigest(QDomElement& element);
+	//void parseRelations(QString fileName);
+	//void cleanRelationsList();
+
 private:
+	enum STATE
+	{
+		eIdle = 0,
+		eDigests,
+		ePublications
+	} _currentState;
+
+private:
+    int _subDomain;
     DownloadManager* _downloadMgr;
-    QList<MSASPublication> _publications;
+    QList<Publication> _publications;
 };
 
 #endif // MSASPUBLICATIONSREFRESHER_H

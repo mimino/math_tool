@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C2093FCB-1DE2-33F9-A2ED-F2EB9161C31E}</ProjectGuid>
+    <RootNamespace>msas-plugin</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <OutputDirectory>..\..\build\plugins\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>msas-plugin</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <OutputDirectory>..\..\build\plugins\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>msas-plugind</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\build\plugins\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">msas-plugin</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\build\plugins\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">msas-plugind</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\base;../../html-qt;C:\qt\qt5.5.1\5.5\msvc2010\include;C:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets;C:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets;C:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit;C:\qt\qt5.5.1\5.5\msvc2010\include\QtGui;C:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE;C:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork;C:\qt\qt5.5.1\5.5\msvc2010\include\QtXml;C:\qt\qt5.5.1\5.5\msvc2010\include\QtCore;release;C:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-w34100 -w34189 -w44996 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_NO_DEBUG;QT_PLUGIN;QT_WEBKITWIDGETS_LIB;QT_WIDGETS_LIB;QT_WEBKIT_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_XML_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>base.lib;$(QTDIR)\lib\Qt5WebKitWidgets.lib;$(QTDIR)\lib\Qt5Widgets.lib;$(QTDIR)\lib\Qt5WebKit.lib;$(QTDIR)\lib\Qt5Gui.lib;$(QTDIR)\lib\Qt5Network.lib;$(QTDIR)\lib\Qt5Xml.lib;$(QTDIR)\lib\Qt5Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\build;C:\qt\qt5.5.1\5.5\msvc2010\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\msas-plugin.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_NO_DEBUG;QT_PLUGIN;QT_WEBKITWIDGETS_LIB;QT_WIDGETS_LIB;QT_WEBKIT_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_XML_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\base;../../html-qt;C:\qt\qt5.5.1\5.5\msvc2010\include;C:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets;C:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets;C:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit;C:\qt\qt5.5.1\5.5\msvc2010\include\QtGui;C:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE;C:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork;C:\qt\qt5.5.1\5.5\msvc2010\include\QtXml;C:\qt\qt5.5.1\5.5\msvc2010\include\QtCore;debug;C:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-w34100 -w34189 -w44996 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_PLUGIN;QT_WEBKITWIDGETS_LIB;QT_WIDGETS_LIB;QT_WEBKIT_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_XML_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>base.lib;$(QTDIR)\lib\Qt5WebKitWidgetsd.lib;$(QTDIR)\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\Qt5WebKitd.lib;$(QTDIR)\lib\Qt5Guid.lib;$(QTDIR)\lib\Qt5Networkd.lib;$(QTDIR)\lib\Qt5Xmld.lib;$(QTDIR)\lib\Qt5Cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\build;C:\qt\qt5.5.1\5.5\msvc2010\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <OutputFile>$(OutDir)\msas-plugind.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_PLUGIN;QT_WEBKITWIDGETS_LIB;QT_WIDGETS_LIB;QT_WEBKIT_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_XML_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Debug\moc_msasauthorsrefresher.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_msaskeywordsrefresher.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_msaspublicationsrefresher.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_msasrefresherbase.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_msas_plugin.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="msas_plugin.cpp" />
+    <ClCompile Include="msasauthorsrefresher.cpp" />
+    <ClCompile Include="msaskeywordsrefresher.cpp" />
+    <ClCompile Include="msaspublicationsrefresher.cpp" />
+    <ClCompile Include="msasrefresherbase.cpp" />
+    <ClCompile Include="Release\moc_msasauthorsrefresher.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_msaskeywordsrefresher.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_msaspublicationsrefresher.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_msasrefresherbase.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_msas_plugin.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="msas_plugin.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+
+if errorlevel 1 goto VCEnd
+endlocal
+"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_PLUGIN -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -DNDEBUG -D_WINDLL "-I." "-I.\..\..\base" "-I.\..\..\html-qt" "-IC:\qt\qt5.5.1\5.5\msvc2010\include" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtGui" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtXml" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtCore" "-I.\release" "-IC:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing msas_plugin.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+
+if errorlevel 1 goto VCEnd
+endlocal
+"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_PLUGIN -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -D_WINDLL "-I." "-I.\..\..\base" "-I.\..\..\html-qt" "-IC:\qt\qt5.5.1\5.5\msvc2010\include" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtGui" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtXml" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtCore" "-I.\debug" "-IC:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing msas_plugin.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="msasauthorsrefresher.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+
+if errorlevel 1 goto VCEnd
+endlocal
+"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_PLUGIN -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -DNDEBUG -D_WINDLL "-I." "-I.\..\..\base" "-I.\..\..\html-qt" "-IC:\qt\qt5.5.1\5.5\msvc2010\include" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtGui" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtXml" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtCore" "-I.\release" "-IC:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing msasauthorsrefresher.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+
+if errorlevel 1 goto VCEnd
+endlocal
+"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_PLUGIN -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -D_WINDLL "-I." "-I.\..\..\base" "-I.\..\..\html-qt" "-IC:\qt\qt5.5.1\5.5\msvc2010\include" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtGui" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtXml" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtCore" "-I.\debug" "-IC:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing msasauthorsrefresher.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="msaskeywordsrefresher.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+
+if errorlevel 1 goto VCEnd
+endlocal
+"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_PLUGIN -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -DNDEBUG -D_WINDLL "-I." "-I.\..\..\base" "-I.\..\..\html-qt" "-IC:\qt\qt5.5.1\5.5\msvc2010\include" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtGui" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtXml" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtCore" "-I.\release" "-IC:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing msaskeywordsrefresher.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+
+if errorlevel 1 goto VCEnd
+endlocal
+"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_PLUGIN -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -D_WINDLL "-I." "-I.\..\..\base" "-I.\..\..\html-qt" "-IC:\qt\qt5.5.1\5.5\msvc2010\include" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtGui" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtXml" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtCore" "-I.\debug" "-IC:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing msaskeywordsrefresher.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="msaspublicationsrefresher.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+
+if errorlevel 1 goto VCEnd
+endlocal
+"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_PLUGIN -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -DNDEBUG -D_WINDLL "-I." "-I.\..\..\base" "-I.\..\..\html-qt" "-IC:\qt\qt5.5.1\5.5\msvc2010\include" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtGui" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtXml" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtCore" "-I.\release" "-IC:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing msaspublicationsrefresher.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+
+if errorlevel 1 goto VCEnd
+endlocal
+"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_PLUGIN -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -D_WINDLL "-I." "-I.\..\..\base" "-I.\..\..\html-qt" "-IC:\qt\qt5.5.1\5.5\msvc2010\include" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtGui" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtXml" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtCore" "-I.\debug" "-IC:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing msaspublicationsrefresher.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="msasrefresherbase.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+
+if errorlevel 1 goto VCEnd
+endlocal
+"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_PLUGIN -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -DNDEBUG -D_WINDLL "-I." "-I.\..\..\base" "-I.\..\..\html-qt" "-IC:\qt\qt5.5.1\5.5\msvc2010\include" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtGui" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtXml" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtCore" "-I.\release" "-IC:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing msasrefresherbase.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+if errorlevel 1 goto VCEnd
+
+if errorlevel 1 goto VCEnd
+endlocal
+"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_PLUGIN -DQT_WEBKITWIDGETS_LIB -DQT_WIDGETS_LIB -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_CORE_LIB -D_WINDLL "-I." "-I.\..\..\base" "-I.\..\..\html-qt" "-IC:\qt\qt5.5.1\5.5\msvc2010\include" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKitWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWidgets" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtWebKit" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtGui" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtANGLE" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtNetwork" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtXml" "-IC:\qt\qt5.5.1\5.5\msvc2010\include\QtCore" "-I.\debug" "-IC:\qt\qt5.5.1\5.5\msvc2010\mkspecs\win32-msvc2010"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing msasrefresherbase.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Qt5Version_x0020_Win32="msvc2010" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

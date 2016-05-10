@@ -1,5 +1,5 @@
-#ifndef __COMMON_STUFF_H__
-#define __COMMON_STUFF_H__
+#ifndef __COMMON_STUFF__
+#define __COMMON_STUFF__
 
 #include <qglobal.h>
 
@@ -11,4 +11,7 @@
 #  define MATHTOOL_EXPORT Q_DECL_IMPORT
 #endif
 
-#endif
+#define APPLICATION_PATH "../build/"
+#define PLUGINS_PATH "../build/plugins/"
+
+#endif // __COMMON_STUFF__

@@ -1,5 +1,5 @@
-#ifndef ARTICLESWIDGET_H
-#define ARTICLESWIDGET_H
+#ifndef __ARTICLES_WIDGET__
+#define __ARTICLES_WIDGET__
 
 #include <QWidget>
 #include "globalcontext.h"
@@ -25,4 +25,4 @@ private:
     QSqlQueryModel* _model;
 };
 
-#endif // ARTICLESWIDGET_H
+#endif // __ARTICLES_WIDGET__

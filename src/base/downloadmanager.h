@@ -17,6 +17,7 @@ public:
 
     void append(const QUrl &url);
     void append(const QStringList &urlList);
+    void setOutputDir(const QString& dir);
     QString saveFileName(const QUrl &url);
 
 signals:
@@ -37,6 +38,7 @@ private:
 
     int downloadedCount;
     int totalCount;
+    QString _currentDir;
 };
 
 #endif //__DOWNLOAD_MANAGER__

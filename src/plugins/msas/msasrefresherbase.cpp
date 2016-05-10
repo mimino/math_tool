@@ -8,7 +8,7 @@ MSASRefresherBase::~MSASRefresherBase()
 {
 }
 
-void MSASRefresherBase::refresh()
+void MSASRefresherBase::refresh(int subDomain)
 {
 
 }

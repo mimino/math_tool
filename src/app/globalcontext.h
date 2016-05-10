@@ -1,5 +1,5 @@
-#ifndef GLOBALCONTEXT_H
-#define GLOBALCONTEXT_H
+#ifndef __GLOBAL_CONTEXT__
+#define __GLOBAL_CONTEXT__
 
 #include <QObject>
 
@@ -7,44 +7,43 @@
 class GlobalContextObserver
 {
 public:
-    virtual void contextChanged() = 0;
+	virtual void contextChanged() = 0;
 };
 
 class GlobalContext
 {
 private:
-     static int _currentSubjectId;
-     static QList<GlobalContextObserver*> _observers;
+	static int _currentSubjectId;
+	static QList<GlobalContextObserver*> _observers;
 private:
-     static void notifyObservers()
-     {
-         GlobalContextObserver* o;
-         foreach(o, _observers)
-         {
-             o->contextChanged();
-         }
-     }
+	static void notifyObservers()
+	{
+		GlobalContextObserver* o;
+		foreach(o, _observers)
+		{
+			o->contextChanged();
+		}
+	}
 public:
-    //static GlobalContext* getInstance();
-    static int getCurrentSubjectId() { return _currentSubjectId; }
-    static void setCurrentSubjectId(int newId) { _currentSubjectId = newId; notifyObservers(); }
+	static int getCurrentSubjectId() { return _currentSubjectId; }
+	static void setCurrentSubjectId(int newId) { _currentSubjectId = newId; notifyObservers(); }
 
-    static void addObserver(GlobalContextObserver* observer)
-    {
-        if(observer && !_observers.contains(observer))
-        {
-            _observers.append(observer);
-        }
-    }
+	static void addObserver(GlobalContextObserver* observer)
+	{
+		if(observer && !_observers.contains(observer))
+		{
+			_observers.append(observer);
+		}
+	}
 
-    static void removeObserver(GlobalContextObserver* observer)
-    {
-        int index = _observers.indexOf(observer);
-        if(index >= 0)
-        {
-            _observers.removeAt(index);
-        }
-    }
+	static void removeObserver(GlobalContextObserver* observer)
+	{
+		int index = _observers.indexOf(observer);
+		if(index >= 0)
+		{
+			_observers.removeAt(index);
+		}
+	}
 };
 
-#endif // GLOBALCONTEXT_H
+#endif // __GLOBAL_CONTEXT__

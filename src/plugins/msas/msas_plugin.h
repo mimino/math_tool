@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QtCore/qplugin.h>
 #include "../../base/plugin_interface.h"
-#include "httprequest.h"
 #include "msasrefresherbase.h"
 
 
@@ -19,8 +18,13 @@ public:
     ~MSASPlugin();
 private:
     QString name() Q_DECL_OVERRIDE;
-    int refresh() Q_DECL_OVERRIDE;
+    QString dataDir() Q_DECL_OVERRIDE;
+    int refresh(int subjectId = 0) Q_DECL_OVERRIDE;
+    void getKeywords(int subjectId, QList<Keyword>& keywords, QList<QPair<int, int> >& relations) Q_DECL_OVERRIDE;
     void switchState();
+    int subjectIdToSubdomain(int subjectId);
+signals:
+    void pluginRefreshFinished(PluginInterface* plugin);
 private slots:
     void finished();
 
@@ -29,10 +33,14 @@ private:
     {
         eIdle = 0,
         ePublications,
-        eAuthors
+        eAuthors,
+        eKeywords
     } _currentState;
 
     MSASRefresherBase* _refresher;
+    int _currentSubjectId;
+    QList<Keyword> _keywords;
+    QList<QPair<int, int> > _relations;
 };
 
 

@@ -1,0 +1,20 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "msas-plugin", "D:/Work/Personal/math_tool/Code/math_tool-mvsc/src/plugins/msas\msas-plugin.vcxproj", "{C2093FCB-1DE2-33F9-A2ED-F2EB9161C31E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2093FCB-1DE2-33F9-A2ED-F2EB9161C31E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C2093FCB-1DE2-33F9-A2ED-F2EB9161C31E}.Debug|Win32.Build.0 = Debug|Win32
+		{C2093FCB-1DE2-33F9-A2ED-F2EB9161C31E}.Release|Win32.ActiveCfg = Release|Win32
+		{C2093FCB-1DE2-33F9-A2ED-F2EB9161C31E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

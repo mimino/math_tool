@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "base", "D:/Work/Personal/math_tool/Code/math_tool-mvsc/src/base\base.vcxproj", "{5FED364C-9B4C-3100-9CF3-3868C9BF181B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app", "D:/Work/Personal/math_tool/Code/math_tool-mvsc/src/app\app.vcxproj", "{B873D769-B20B-3F98-87E4-C282D41D9CB6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5FED364C-9B4C-3100-9CF3-3868C9BF181B} = {5FED364C-9B4C-3100-9CF3-3868C9BF181B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "msas-plugin", "D:/Work/Personal/math_tool/Code/math_tool-mvsc/src/plugins/msas\msas-plugin.vcxproj", "{C2093FCB-1DE2-33F9-A2ED-F2EB9161C31E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5FED364C-9B4C-3100-9CF3-3868C9BF181B} = {5FED364C-9B4C-3100-9CF3-3868C9BF181B}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FED364C-9B4C-3100-9CF3-3868C9BF181B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5FED364C-9B4C-3100-9CF3-3868C9BF181B}.Debug|Win32.Build.0 = Debug|Win32
+		{5FED364C-9B4C-3100-9CF3-3868C9BF181B}.Release|Win32.ActiveCfg = Release|Win32
+		{5FED364C-9B4C-3100-9CF3-3868C9BF181B}.Release|Win32.Build.0 = Release|Win32
+		{B873D769-B20B-3F98-87E4-C282D41D9CB6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B873D769-B20B-3F98-87E4-C282D41D9CB6}.Debug|Win32.Build.0 = Debug|Win32
+		{B873D769-B20B-3F98-87E4-C282D41D9CB6}.Release|Win32.ActiveCfg = Release|Win32
+		{B873D769-B20B-3F98-87E4-C282D41D9CB6}.Release|Win32.Build.0 = Release|Win32
+		{C2093FCB-1DE2-33F9-A2ED-F2EB9161C31E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C2093FCB-1DE2-33F9-A2ED-F2EB9161C31E}.Debug|Win32.Build.0 = Debug|Win32
+		{C2093FCB-1DE2-33F9-A2ED-F2EB9161C31E}.Release|Win32.ActiveCfg = Release|Win32
+		{C2093FCB-1DE2-33F9-A2ED-F2EB9161C31E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

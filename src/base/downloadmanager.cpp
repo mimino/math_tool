@@ -1,5 +1,6 @@
 #include "downloadmanager.h"
 
+#include <QCryptographicHash>
 #include <QtNetwork>
 #include <QFileInfo>
 #include <QNetworkRequest>
@@ -13,6 +14,11 @@
 DownloadManager::DownloadManager(QObject *parent)
     : QObject(parent), downloadedCount(0), totalCount(0)
 {
+    QDir dir;
+	dir.cd(APPLICATION_PATH);
+	dir.cd("data");
+	dir.mkdir("download");
+    _currentDir = "download";
 }
 
 void DownloadManager::append(const QStringList &urlList)
@@ -37,22 +43,14 @@ void DownloadManager::append(const QUrl &url)
 
 QString DownloadManager::saveFileName(const QUrl &url)
 {
-    QString path = url.path();
-    QString basename = QFileInfo(path).fileName();
-
-    if (basename.isEmpty())
-        basename = "download";
-
-    if (QFile::exists(basename)) {
-        // already exists, don't overwrite
-        int i = 0;
-        basename += '.';
-        while (QFile::exists(basename + QString::number(i)))
-            ++i;
-
-        basename += QString::number(i);
+    QCryptographicHash hash(QCryptographicHash::Md5);
+    QByteArray result = hash.hash(url.toString().toUtf8(),QCryptographicHash::Md5);
+    QString basename = QString("%1data/download/").arg(APPLICATION_PATH);
+    if(!_currentDir.contains("download"))
+    {
+        basename.append(_currentDir + "/");
     }
-
+    basename.append(result.toHex());
     return basename;
 }
 
@@ -87,12 +85,12 @@ void DownloadManager::startNextDownload()
 
     QString filename = saveFileName(url);
     output.setFileName(filename);
-    if (!output.open(QIODevice::WriteOnly)) {
+    if (QFile::exists(filename) || !output.open(QIODevice::WriteOnly)) {
         fprintf(stderr, "Problem opening save file '%s' for download '%s': %s\n",
-                qPrintable(filename), url.toEncoded().constData(),
-                qPrintable(output.errorString()));
+            qPrintable(filename), url.toEncoded().constData(),
+            qPrintable(output.errorString()));
 
-        startNextDownload();
+		QTimer::singleShot(0, this, SLOT(startNextDownload()));
         return;                 // skip this download
     }
 
@@ -147,5 +145,15 @@ void DownloadManager::downloadReadyRead()
 {
     QByteArray array = currentDownload->readAll();
     output.write(array);
+}
+
+void DownloadManager::setOutputDir(const QString& dir)
+{
+    _currentDir = dir;
+    QDir qdir;
+	qdir.cd(APPLICATION_PATH);
+	qdir.cd("data");
+    qdir.cd("download");
+    qdir.mkdir(dir);
 }
 

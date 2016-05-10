@@ -1,17 +1,17 @@
-#ifndef CONTENTWIDGET_H
-#define CONTENTWIDGET_H
+#ifndef __CONTENT_WIDGET__
+#define __CONTENT_WIDGET__
 
 #include <QTabWidget>
 
 class ContentWidget : public QTabWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit ContentWidget(QWidget *parent = 0);
+	explicit ContentWidget(QWidget *parent = 0);
 
 private:
-    void setupTabs();
+	void setupTabs();
 
 };
 
-#endif // CONTENTWIDGET_H
+#endif // __CONTENT_WIDGET__

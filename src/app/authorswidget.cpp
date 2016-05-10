@@ -48,7 +48,6 @@ AuthorsWidget::AuthorsWidget(QWidget *parent) :
 
     _groups << "ABC" << "DEF" << "GHI" << "JKL" << "MNO" << "PQR" << "STU" << "VW" << "XYZ";
     setupTabs();
-    //readFromFile("authors.txt");
 }
 
 void AuthorsWidget::addEntry()
@@ -145,11 +144,6 @@ void AuthorsWidget::setupTabs()
 
         //addTab(tableView, str);
     }
-}
-
-void AuthorsWidget::readFromFile(QString fileName)
-{
-    //table->readFromFile(fileName);
 }
 
 //int VerticalTabWidget::currentIndex() const

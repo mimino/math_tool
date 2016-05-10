@@ -1,5 +1,5 @@
-#ifndef JOURNALSWIDGET_H
-#define JOURNALSWIDGET_H
+#ifndef __JOURNALS_WIDGET__
+#define __JOURNALS_WIDGET__
 
 #include <QWidget>
 
@@ -9,14 +9,14 @@ QT_END_NAMESPACE
 
 class JournalsWidget : public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit JournalsWidget(QAbstractItemModel* model, QWidget *parent = 0);
+	explicit JournalsWidget(QAbstractItemModel* model, QWidget *parent = 0);
 
 signals:
 
-public slots:
+	public slots:
 
 };
 
-#endif // JOURNALSWIDGET_H
+#endif // __JOURNALS_WIDGET__

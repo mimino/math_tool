@@ -2,41 +2,42 @@
 #include <QtSql>
 #include <QModelIndex>
 
+#include "globalcontext.h"
 #include "mainwindow.h"
 #include "contentwidget.h"
 #include "subjectswidget.h"
-#include "addresswidget.h"
-#include "../base/plugin_interface.h"
+#include "glwidget.h"
+#include "datamodel.h"
 
 MainWindow::MainWindow() : QMainWindow()
 {
+    _dataMdl = new DataModel();
     _subjectsWidget = new SubjectsWidget();
     _contentWidget = new ContentWidget();
 
     QPushButton* refreshButton = new QPushButton(tr("Refresh"));
+    QPushButton* visualizeButton = new QPushButton(tr("Visualize"));
     QPushButton* closeButton = new QPushButton(tr("Close"));
 
     connect(closeButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(refreshButton, SIGNAL(clicked()), this, SLOT(refresh()));
-
-    //QVBoxLayout* topButtonsLayout = new QVBoxLayout;
-    //topButtonsLayout->addStretch(1);
-    //topButtonsLayout->addWidget(refreshButton);
+    connect(visualizeButton, SIGNAL(clicked()), this, SLOT(visualize()));
 
     QHBoxLayout *horizontalLayout = new QHBoxLayout;
     horizontalLayout->addWidget(_subjectsWidget);
-    //horizontalLayout->addWidget(new AddressWidget());
     horizontalLayout->addWidget(_contentWidget, 1);
-
-//    connect(_subjectsWidget, SIGNAL(clicked(QModelIndex)),
-//            this, SLOT(changeSubject(QModelIndex)));
 
     QHBoxLayout* bottomButtonsLayout = new QHBoxLayout;
     bottomButtonsLayout->addStretch(1);
     bottomButtonsLayout->addWidget(closeButton);
 
+    QHBoxLayout* topButtonsLayout = new QHBoxLayout;
+    //topButtonsLayout->addStretch(1);
+    topButtonsLayout->addWidget(refreshButton, 0, Qt::AlignLeft);
+    topButtonsLayout->addWidget(visualizeButton, 1, Qt::AlignLeft);
+
     QVBoxLayout* mainLayout = new QVBoxLayout;
-    mainLayout->addWidget(refreshButton, 0, Qt::AlignLeft);
+    mainLayout->addLayout(topButtonsLayout, 1);
     mainLayout->addLayout(horizontalLayout);
     mainLayout->addLayout(bottomButtonsLayout);
     setLayout(mainLayout);
@@ -77,20 +78,11 @@ void MainWindow::changeSubject(QModelIndex index)
 void MainWindow::refresh()
 {
     QString path(qApp->applicationDirPath());
-    QDir pluginsDir(path);
-    pluginsDir.cd("plugins");
+    _dataMdl->refresh(GlobalContext::getCurrentSubjectId());
+}
 
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
-    {
-        QPluginLoader pluginLoader(pluginsDir.absoluteFilePath(fileName));
-        QObject *plugin = pluginLoader.instance();
-        if (plugin)
-        {
-            PluginInterface* pluginInterface = qobject_cast<PluginInterface*>(plugin);
-            if(pluginInterface)
-            {
-                pluginInterface->refresh();
-            }
-        }
-    }
+void MainWindow::visualize()
+{
+    GLWidget *glwidget = new GLWidget(*_dataMdl);
+    glwidget->show();
 }

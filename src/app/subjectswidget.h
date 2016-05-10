@@ -1,5 +1,5 @@
-#ifndef SUBJECTSWIDGET_H
-#define SUBJECTSWIDGET_H
+#ifndef __SUBJECTS_WIDGET__
+#define __SUBJECTS_WIDGET__
 
 #include <QWidget>
 #include <QModelIndex>
@@ -25,11 +25,8 @@ private slots:
 
 private:
     QTableView* _tableView;
-    //int _currentIndex;
-    //TableModel *table;
-
     QVBoxLayout* _mainLayout;
     QSqlTableModel* _model;
 };
 
-#endif // SUBJECTSWIDGET_H
+#endif // __SUBJECTS_WIDGET__

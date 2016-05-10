@@ -4,7 +4,6 @@
 #include "authorswidget.h"
 #include "articleswidget.h"
 #include "contentwidget.h"
-#include "addresswidget.h"
 #include "journalswidget.h"
 #include "organizationswidget.h"
 
