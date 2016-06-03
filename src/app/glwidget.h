@@ -10,6 +10,7 @@
 #include "transform3d.h"
 #include "camera3d.h"
 #include "datamodel.h"
+#include "datavisualization.h"
 
 class QOpenGLShaderProgram;
 
@@ -20,7 +21,7 @@ class GLWidget : public QOpenGLWidget,
 
 		// OpenGL Events
 public:
-	GLWidget(DataModel& model);
+	GLWidget(DataModel& model, int entityType);
 	void initializeGL();
 	void resizeGL(int width, int height);
 	void paintGL();
@@ -49,7 +50,7 @@ private:
 	QMatrix4x4 m_projection;
 	Camera3D m_camera;
 	Transform3D m_transform;
-	Graph _graph;
+	DataVisualization* _visualization;
 
 	// Private Helpers
 	void printVersionInformation();

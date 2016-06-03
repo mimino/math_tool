@@ -48,6 +48,8 @@ AuthorsWidget::AuthorsWidget(QWidget *parent) :
 
     _groups << "ABC" << "DEF" << "GHI" << "JKL" << "MNO" << "PQR" << "STU" << "VW" << "XYZ";
     setupTabs();
+	
+    //readFromFile1("f:\Papers.txt");
 }
 
 void AuthorsWidget::addEntry()
@@ -144,6 +146,106 @@ void AuthorsWidget::setupTabs()
 
         //addTab(tableView, str);
     }
+}
+
+void AuthorsWidget::readFromFile(QString fileName)
+{
+    //table->readFromFile(fileName);
+
+	QFile papers;
+	papers.setFileName("f:\Papers.txt");
+	if (!papers.open(QIODevice::ReadOnly | QIODevice::Text)) {
+		return;
+	}
+
+	QSqlTableModel* model = new QSqlTableModel(this);
+	model->setTable("authors");
+	//model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+	//model->select();
+
+	long long i=8;
+	//QList<QByteArray> strings;
+	while (!papers.atEnd()) {
+		QByteArray line = papers.readLine();
+		//strings += line.split('\t');
+		QString queryStr = QString("insert into authors values(%1, '%2', %3)").arg(i).arg(QString(line)).arg('YY');
+		//bool res = query.exec(queryStr);
+
+		QSqlRecord record;
+
+		QSqlField f1("id", QVariant::Int);
+		QSqlField f2("author", QVariant::String);
+		QSqlField f3("organization", QVariant::String);
+
+		f1.setValue(QVariant(i));
+		f2.setValue(QVariant(QString(line)));
+		f3.setValue(QVariant("YY"));
+
+		record.append(f1);
+		record.append(f2);
+		record.append(f3);
+
+		model->insertRecord(-1, record);
+		//model->submitAll();
+		i++;
+	}
+
+
+	int a = 0;
+	a++;
+}
+
+void AuthorsWidget::readFromFile1(QString fileName)
+{
+	QFile file(fileName);
+
+	if (!file.open(QIODevice::ReadOnly))
+	{
+		return;
+	}
+
+	int i = 0;
+	QTextStream stream ( &file );
+	QString line;
+	//QSqlQuery q("INSERT INTO authors (id,name,address) VALUES (:id,:name,:address)");
+
+	QSqlTableModel* model = new QSqlTableModel(this);
+	model->setTable("authors");
+
+	QSqlQuery q;
+	qDebug() << QTime::currentTime().toString("hh:mm:ss:zzz");
+	QStringList lines;
+	int k=0;
+	while(!stream.atEnd())
+	{
+		line = stream.readLine();
+		lines.append(line);
+		i++;
+
+//		QString queryStr = QString("insert into authors values(%1,'%2','%3')").arg(i).arg(line).arg("NN");
+//		q.exec(queryStr);
+
+		if(i > 2000000)
+		{
+			model->database().transaction();
+			int k0=k;
+			for(k=k0; k<k0+2000000; k++)
+			{
+				QString queryStr = QString("insert into authors values(%1,'%2','%3')").arg(k).arg(lines.at(k-k0)).arg("NN");
+				q.exec(queryStr);
+			}
+
+			model->database().commit();
+
+			i=0;
+			lines.clear();
+			//break;
+		}
+	}
+	
+	qDebug() << QTime::currentTime().toString("hh:mm:ss:zzz");
+
+	file.close(); // when your done.
 }
 
 //int VerticalTabWidget::currentIndex() const

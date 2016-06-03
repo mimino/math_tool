@@ -10,9 +10,9 @@ sources.path = /usr/include/math_tool
 
 HEADERS = \
 	common_stuff.h \
-	httprequest.h \
     downloadmanager.h \
     datamodel.h \
+    datavisualization.h \
     author.h \
     publication.h \
     organization.h \
@@ -22,9 +22,9 @@ HEADERS = \
     reg_exp.h \
     types.h
 SOURCES = \
-	httprequest.cpp \
     downloadmanager.cpp \
     datamodel.cpp \
+    datavisualization.cpp \
     author.cpp \
     publication.cpp \
     organization.cpp \

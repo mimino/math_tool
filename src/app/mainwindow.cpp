@@ -83,6 +83,6 @@ void MainWindow::refresh()
 
 void MainWindow::visualize()
 {
-    GLWidget *glwidget = new GLWidget(*_dataMdl);
+    GLWidget *glwidget = new GLWidget(*_dataMdl, ENTITY_TYPE_AUTHORS);
     glwidget->show();
 }

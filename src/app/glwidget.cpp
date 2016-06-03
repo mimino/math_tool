@@ -1,14 +1,17 @@
-#include "glwidget.h"
 #include <QtMath>
 #include <QDebug>
 #include <QString>
 #include <QOpenGLShaderProgram>
 #include <QKeyEvent>
+#include "glwidget.h"
+#include "globalcontext.h"
 #include "input.h"
 
-GLWidget::GLWidget(DataModel& model) : _dataModel(model)
+GLWidget::GLWidget(DataModel& model, int entityType) : _dataModel(model)
 {
 	m_transform.translate(0.0f, 0.0f, -5.0f);
+
+	_visualization = new DataVisualization(this, _dataModel, entityType, GlobalContext::getCurrentSubjectId());
 }
 
 void GLWidget::initializeGL()
@@ -23,8 +26,6 @@ void GLWidget::initializeGL()
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);
 	glEnable(GL_POINT_SMOOTH);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
-	_graph = _dataModel.getGraph();
 
 	// Create Shader (Do not release until VAO is created)
 	m_program = new QOpenGLShaderProgram();
@@ -43,27 +44,27 @@ void GLWidget::initializeGL()
 	m_vertex.bind();
 	m_vertex.setUsagePattern(QOpenGLBuffer::StaticDraw);
 
-	const int verticesCount = _graph._complex.count()*2;
+	const int verticesCount = _visualization->graph().count()*2;
 	QVector<GLfloat> buf;
-	buf.resize(verticesCount * 7);
+	buf.resize(verticesCount*7);
 	GLfloat *p = buf.data();
 	for (int i = 0; i < verticesCount/2; ++i) {
-		Edge edge(_graph._complex[i]);
-		*p++ = _graph._coordinates[edge[0]].x();
-		*p++ = _graph._coordinates[edge[0]].y();
-		*p++ = _graph._coordinates[edge[0]].z();
+		Edge edge(_visualization->graph()[i]);
+		*p++ = _visualization->coordinates()[edge[0]].x();
+		*p++ = _visualization->coordinates()[edge[0]].y();
+		*p++ = _visualization->coordinates()[edge[0]].z();
 		*p++ = 0.f;
 		*p++ = 1.f;
 		*p++ = 0.f;
-		*p++ = _graph._sizes[edge[0]];
+		*p++ = _visualization->sizes()[edge[0]];
 
-		*p++ = _graph._coordinates[edge[1]].x();
-		*p++ = _graph._coordinates[edge[1]].y();
-		*p++ = _graph._coordinates[edge[1]].z();
+		*p++ = _visualization->coordinates()[edge[1]].x();
+		*p++ = _visualization->coordinates()[edge[1]].y();
+		*p++ = _visualization->coordinates()[edge[1]].z();
 		*p++ = 0.f;
 		*p++ = 1.f;
 		*p++ = 0.f;
-		*p++ = _graph._sizes[edge[1]];
+		*p++ = _visualization->sizes()[edge[1]];
 	}
 	m_vertex.allocate(buf.constData(), buf.count()*sizeof(GLfloat));
 
@@ -103,7 +104,7 @@ void GLWidget::paintGL()
 	{
 		m_object.bind();
 		m_program->setUniformValue(u_modelToWorld, m_transform.toMatrix());
-		glDrawArrays(GL_POINTS, 0, _graph._complex.count()*2);
+		glDrawArrays(GL_POINTS, 0, _visualization->graph().count()*2);
 		m_object.release();
 	}
 	m_program->release();
@@ -115,6 +116,7 @@ void GLWidget::teardownGL()
 	m_object.destroy();
 	m_vertex.destroy();
 	delete m_program;
+	delete _visualization;
 }
 
 void GLWidget::update()

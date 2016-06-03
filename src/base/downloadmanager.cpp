@@ -77,12 +77,12 @@ void DownloadManager::startNextDownload()
 
     if (downloadQueue.isEmpty()) {
         qDebug() << downloadedCount << "/" << totalCount << " files downloaded successfully\n";
+		totalCount = 0;
         emit finished();
         return;
     }
 
     QUrl url = downloadQueue.dequeue();
-
     QString filename = saveFileName(url);
     output.setFileName(filename);
     if (QFile::exists(filename) || !output.open(QIODevice::WriteOnly)) {

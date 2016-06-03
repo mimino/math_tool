@@ -51,17 +51,8 @@ typedef QVector<Vertex> VerticesList;
 typedef TMarkedSimplex<1> Edge;
 typedef QVector<Edge> EdgesList;
 
-class Graph
-{
-public:
-    Graph() { reset(); }
-    void reset() {_coordinates.clear(); _complex.clear(); _sizes.clear(); }
-public:
-    PointsList _coordinates;
-    QVector<int> _sizes;
-    EdgesList _complex;
-};
-
-
+#define ENTITY_TYPE_AUTHORS 0
+#define ENTITY_TYPE_PUBLICATIONS 1
+#define ENTITY_TYPE_KEYWORDS 2
 
 #endif // __TYPES__

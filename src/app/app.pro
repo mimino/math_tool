@@ -8,7 +8,6 @@ QMAKE_CXXFLAGS += -D_FILE_OFFSET_BITS=64
 HEADERS = \
 	pages.h \
 	addresswidget.h \
-	tablemodel.h \
 	authorswidget.h \
 	extendedtabwidget.h \
 	database.h \
@@ -26,8 +25,6 @@ HEADERS = \
 SOURCES = \
 	main.cpp \
 	pages.cpp \
-	addresswidget.cpp \
-	tablemodel.cpp \
 	authorswidget.cpp \
 	extendedtabwidget.cpp \
 	articleswidget.cpp \

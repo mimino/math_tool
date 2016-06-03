@@ -50,7 +50,12 @@ int MSASPlugin::refresh(int subjectId)
 void MSASPlugin::getKeywords(int subjectId, QList<Keyword>& keywords, QList<QPair<int, int> >& relations)
 {
     keywords = _keywords;
-    relations = _relations;
+    relations = _keywordsRelations;
+}
+
+void MSASPlugin::getAuthors(int subjectId, QList<Author>& authors)
+{
+	authors = _authors;
 }
 
 void MSASPlugin::finished()
@@ -72,7 +77,7 @@ void MSASPlugin::switchState()
     case eIdle:
 		_currentState = eKeywords;
 		delete _refresher;
-		_refresher = new MSASKeywordsRefresher(_keywords, _relations);
+		_refresher = new MSASKeywordsRefresher(_keywords, _keywordsRelations);
 		break;
 	case ePublications:
 		_currentState = eIdle;
@@ -80,18 +85,14 @@ void MSASPlugin::switchState()
 		_refresher = NULL;
 		break;
     case eAuthors:
-		//_currentState = ePublications;
-		//delete _refresher;
-		//_refresher = new MSASPublicationsRefresher();
-       
-		_currentState = eIdle;
+		_currentState = ePublications;
 		delete _refresher;
-		_refresher = NULL;
+		_refresher = new MSASPublicationsRefresher();
 		break;
     case eKeywords:
 		_currentState = eAuthors;
 		delete _refresher;
-		_refresher = new MSASAuthorsRefresher();
+		_refresher = new MSASAuthorsRefresher(_authors, _keywords);
         break;
     default:
         break;

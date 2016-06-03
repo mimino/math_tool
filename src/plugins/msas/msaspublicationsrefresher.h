@@ -21,19 +21,11 @@ private slots:
     void finished();
 
 private:
-	void downloadPage(int pageNum);
-    void parseHtml(QString fileName);
-    bool isLastPage(QString fileName);
-
-
 	void switchState();
 	void refreshList();
 	void refreshPublications();
 	void parseDigestList(QString fileName);
 	Publication parsePublicationDigest(QDomElement& element);
-	//void parseRelations(QString fileName);
-	//void cleanRelationsList();
-
 private:
 	enum STATE
 	{

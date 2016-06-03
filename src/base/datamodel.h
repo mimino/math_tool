@@ -16,25 +16,35 @@ class MATHTOOL_EXPORT DataModel : public QObject
 public:
     explicit DataModel(QObject *parent = 0);
     void refresh(int subjectId = 0);
-    Graph& getGraph();
 private:
-	void refreshFromLocal(int subjectId = 0);
-    void refreshFromRemote(int subjectId = 0);
-    void refreshGraph();
-    int mapWeightToGraphPointSize(int weight);
+	int refreshFromLocal();
+	int refreshAuthors();
+	int refreshKeywords();
+	int refreshPublications();
+
+	void refreshFromRemote();
+
 	void storeToLocal();
-	void placeGraph();
+	void storeAuthors();
+	void storeKeywords();
+	void storePublications();
+
+signals:
+	void refreshFinished();
 private slots:
     void refreshFromRemoteFinished(PluginInterface* plugin);
 public:
     int _curSubjectId;
     QList<Publication> _publications;
-    QList<Author> _authors;
+	QList<QPair<int, int> > _publicationsRelations;
+
+	QList<Author> _authors;
+
     QList<Keyword> _keywords;
     QList<QPair<int, int> > _keywordsRelations;
     QList<Journal> _journals;
     QList<Organization> _organizations;
-    Graph _graph;
+//    Graph _graph;
 };
 
 #endif // __DATA_MODEL__

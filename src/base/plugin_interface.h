@@ -5,6 +5,7 @@
 #include <QString>
 #include <QIcon>
 #include "keyword.h"
+#include "author.h"
 
 class PluginInterface
 {
@@ -15,6 +16,7 @@ public:
 	virtual QString dataDir() = 0;
     virtual int refresh(int subjectId = 0) = 0;
     virtual void getKeywords(int subjectId, QList<Keyword>& keywords, QList<QPair<int, int> >& relations) = 0;
+	virtual void getAuthors(int subjectId, QList<Author>& authors) = 0;
 
 signals:
     virtual void pluginRefreshFinished(PluginInterface* plugin) = 0;

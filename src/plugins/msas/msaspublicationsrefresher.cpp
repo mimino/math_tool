@@ -48,10 +48,10 @@ void MSASPublicationsRefresher::finished()
 	{
 	case eDigests:
 		{
-			QDir pluginsDir(QString("download/publications-subdomain-%1").arg(_subDomain));
+			QDir pluginsDir(QString("%1data/download/publications-subdomain-%2").arg(APPLICATION_PATH).arg(_subDomain));
 			foreach (QString fileName, pluginsDir.entryList(QDir::Files))
 			{
-				parseDigestList(QString("download/publications-subdomain-%1/%2").arg(_subDomain).arg(fileName));
+				parseDigestList(QString("%1data/download/publications-subdomain-%2/%3").arg(APPLICATION_PATH).arg(_subDomain).arg(fileName));
 			}
 
 			refreshPublications();

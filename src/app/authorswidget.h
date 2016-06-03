@@ -18,6 +18,8 @@ class AuthorsWidget : public QWidget, public GlobalContextObserver
     Q_OBJECT
 public:
     explicit AuthorsWidget(QWidget *parent = 0);
+    void readFromFile(QString fileName);
+	void readFromFile1(QString fileName);
 public slots:
     void addEntry();
     void addEntry(QString name, QString address);

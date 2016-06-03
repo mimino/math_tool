@@ -8,7 +8,6 @@
 #include "keyword.h"
 
 
-class MSASAuthor;
 class DownloadManager;
 
 class MSASKeywordsRefresher : public MSASRefresherBase
